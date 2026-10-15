@@ -1,0 +1,5 @@
+.
+├── STRUKTUR.txt
+└── UNICORN-OMEGA-DOCUMENTATION.zip
+
+1 directory, 2 files
