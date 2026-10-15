@@ -1,0 +1,11 @@
+# DESIGN-ONLY
+http::request_buat, :"GET", :"https://jsonplaceholder.typicode.com/posts", :req:
+http::query, :req:, :"userId", :"1"
+http::query, :req:, :"_limit", :"10"
+http::header, :req:, :"Accept", :"application/json"
+http::kirim, :req:, :res:
+response::status, :res:, :status:
+assert::sama, :status:, 200
+json::decode, :res:, :posts:
+collection::batas, :posts:, 10, :limited:
+:akhir

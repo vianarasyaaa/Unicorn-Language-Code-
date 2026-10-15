@@ -1,0 +1,26 @@
+name: Koreksi atau pertanyaan aturan bahasa
+description: Laporkan aturan yang perlu diklarifikasi oleh pencipta
+title: "[Aturan]: "
+labels: ["specification", "needs-owner-review"]
+body:
+  - type: textarea
+    id: current-example
+    attributes:
+      label: Contoh yang sudah diajarkan
+      description: Tempel contoh asli; jangan mengubah sintaksnya.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Hal yang belum jelas
+      description: Jelaskan pertanyaan tanpa menebak jawabannya.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Pengakuan status
+      options:
+        - label: Saya memahami bahwa dokumentasi bukan bukti compiler berjalan.
+          required: true

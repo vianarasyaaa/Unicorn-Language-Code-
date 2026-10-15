@@ -1,0 +1,20 @@
+#program "HTTP_CLIENT_POLICY_LOW"
+#level "LOW"
+
+uri::parse, :"https://jsonplaceholder.typicode.com/posts/1", :uri:
+uri::scheme_require, :uri:, :"https"
+uri::host_allow, :uri:, :"jsonplaceholder.typicode.com"
+http::request_init, :"GET", :uri:, :request:
+http::header, :request:, :"Accept", :"application/json"
+http::timeout_connect_ms, :request:, 1500
+http::timeout_total_ms, :request:, 5000
+http::max_response_bytes, :request:, 1048576
+http::tls_verify, :request:, benar
+http::redirect_policy, :request:, :"REVALIDATE_EACH_HOP"
+http::send, :request:, :response:
+http::status, :response:, :status:
+http::body_read_bounded, :response:, 1048576, :body:
+json::parse, :body:, :document:
+schema::validate, :document:, :"Post", :post:
+http::response_close, :response:
+:akhir

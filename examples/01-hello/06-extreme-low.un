@@ -1,0 +1,40 @@
+#program "HALO_EXTREME_LOW"
+#level "EXTREME_LOW"
+#target "NATIVE"
+
+konstanta::tetapkan, 13, :N:
+konstanta::tetapkan, 8, :ALIGNMENT:
+memori::alokasi_alignment, :N:, :ALIGNMENT:, :buffer:
+memori::validasi, :buffer:
+memori::validasi_alignment, :buffer:, :ALIGNMENT:
+buffer::bersihkan, :buffer:, :N:
+
+byte::tulis, :buffer:, 0, 72
+byte::tulis, :buffer:, 1, 97
+byte::tulis, :buffer:, 2, 108
+byte::tulis, :buffer:, 3, 111
+byte::tulis, :buffer:, 4, 44
+byte::tulis, :buffer:, 5, 32
+byte::tulis, :buffer:, 6, 100
+byte::tulis, :buffer:, 7, 117
+byte::tulis, :buffer:, 8, 110
+byte::tulis, :buffer:, 9, 105
+byte::tulis, :buffer:, 10, 97
+byte::tulis, :buffer:, 11, 33
+byte::tulis, :buffer:, 12, 10
+
+buffer::validasi_panjang, :buffer:, :N:
+buffer::hitung_checksum, :buffer:, :N:, :checksum:
+sistem::stdout_resolve, :stdout:
+sistem::validasi_handle, :stdout:, :valid:
+jika::tidak, :valid
+    memori::bebaskan, :buffer:
+    program::gagal, :"INVALID_STDOUT"
+:selesai
+sistem::tulis_semua, :stdout:, :buffer:, :N:, :tertulis:
+jika::tidak_sama, :tertulis:, :N:
+    error::laporkan, :"WRITE_INCOMPLETE"
+:selesai
+memori::bebaskan, :buffer:
+
+:akhir

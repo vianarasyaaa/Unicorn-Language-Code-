@@ -1,0 +1,11 @@
+#program "ASM_DEMO"
+#level "ASM"
+#target "X86_64"
+
+assembly::blok, :"X86_64"
+    MOV RAX, 100
+    MOV RBX, 50
+    ADD RAX, RBX
+assembly::hasil, :RAX:, :hasil:
+
+:akhir

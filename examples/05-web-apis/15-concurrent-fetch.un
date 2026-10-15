@@ -1,0 +1,10 @@
+# DESIGN-ONLY; use a bounded worker pool, not unbounded task creation.
+concurrency::pool, 8, :pool:
+concurrency::queue_capacity, :pool:, 64
+concurrency::on_full, :pool:, :"BACKPRESSURE"
+ulang::untuk, :url:, :urls:
+    concurrency::submit, :pool:, :url:, :fetch_and_validate:
+:selesai
+concurrency::drain_until, :pool:, :deadline(30000):
+concurrency::close, :pool:
+:akhir

@@ -1,0 +1,13 @@
+# DESIGN-ONLY
+http::request_buat, :"PATCH", :"https://jsonplaceholder.typicode.com/posts/1", :patch_req:
+http::header, :patch_req:, :"Content-Type", :"application/json"
+http::body_json, :patch_req:, {"title":"Updated title"}
+http::kirim, :patch_req:, :patch_res:
+response::status, :patch_res:, :patch_status:
+assert::di_dalam, :patch_status:, 200, 299
+
+http::request_buat, :"DELETE", :"https://jsonplaceholder.typicode.com/posts/1", :delete_req:
+http::kirim, :delete_req:, :delete_res:
+response::status, :delete_res:, :delete_status:
+assert::di_dalam, :delete_status:, 200, 299
+:akhir

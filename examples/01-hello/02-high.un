@@ -1,0 +1,7 @@
+#program "HALO_HIGH"
+#language "ID"
+#level "HIGH"
+
+layar::cetak, :"Halo, dunia!"
+
+:akhir

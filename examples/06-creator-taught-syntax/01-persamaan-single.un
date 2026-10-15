@@ -1,0 +1,15 @@
+#bahasa "ID"
+#level "HIGH"
+
+program "PERSAMAAN_APLIKASI":
+
+    persamaan= "WhatsApp",
+    objek::(WhatsApp):,
+
+    kenyataan::a:,
+        maka#sama#dengan::WeChat,
+
+    :hasil:"WhatsApp dan WeChat sama-sama aplikasi komunikasi."
+
+:selesai
+:akhir

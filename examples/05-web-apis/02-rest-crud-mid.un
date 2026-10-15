@@ -1,0 +1,22 @@
+#program "REST_CRUD_MID"
+#level "MID"
+
+api::client_buat, :"https://jsonplaceholder.typicode.com", :client:
+api::timeout, :client:, 5000
+api::response_limit, :client:, 1048576
+api::header, :client:, :"Accept", :"application/json"
+
+api::get, :client:, :"/posts/1", :existing_post:
+schema::validate, :existing_post:, :"Post", :valid_post:
+
+nilai::buat_map, :new_post:
+map::set, :new_post:, :"title", :"Hello from UNICORN"
+map::set, :new_post:, :"body", :"Demo only"
+map::set, :new_post:, :"userId", 1
+api::post_json, :client:, :"/posts", :new_post:, :created_post:
+
+map::set, :new_post:, :"title", :"Updated title"
+api::patch_json, :client:, :"/posts/1", :new_post:, :updated_post:
+api::delete, :client:, :"/posts/1", :delete_result:
+
+:akhir

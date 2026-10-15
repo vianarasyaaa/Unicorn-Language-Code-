@@ -1,0 +1,9 @@
+# DESIGN-ONLY
+circuit::buat, :"provider_api", :breaker:
+circuit::configure, :breaker:
+    circuit::failure_threshold, 5
+    circuit::open_duration_ms, 10000
+    circuit::half_open_probe_limit, 2
+:selesai
+circuit::call, :breaker:, :operation:, :result:
+:akhir

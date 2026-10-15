@@ -1,0 +1,15 @@
+#bahasa "ID"
+#level "HIGH"
+
+program "PERSAMAAN_APLIKASI":
+
+    objek= "WhatsApp*:a",
+
+    kenyataan::a:,
+        maka#sama#dengan::WeChat,
+        maka#persis#dengan::WeChat,
+
+    :hasil:"WhatsApp dan WeChat sama-sama aplikasi komunikasi, tetapi tidak persis identik dalam fitur dan sistemnya."
+
+:selesai
+:akhir

@@ -1,0 +1,10 @@
+# DESIGN-ONLY
+web::server, :"127.0.0.1", 8080, :app:
+web::middleware, :app:, :"request_id"
+web::middleware, :app:, :"body_limit_1mb"
+web::middleware, :app:, :"error_mapper"
+web::route, :app:, :"GET", :"/health", :health_handler:
+web::route, :app:, :"GET", :"/v1/posts/:id", :get_post_handler:
+web::route, :app:, :"POST", :"/v1/posts", :create_post_handler:
+web::start, :app:
+:akhir

@@ -1,0 +1,8 @@
+#program "OPENAPI_CLIENT_GENERATION"
+#level "HIGH"
+
+openapi::load, :"openapi.yaml", :contract:
+openapi::validate, :contract:, :diagnostics:
+openapi::client_generate, :contract:, :"UNICORN_HTTP", :"generated/api_client":
+test::contract, :"generated/api_client", :"fixtures/api":
+:akhir

@@ -1,0 +1,17 @@
+#program "HALO_MID"
+#level "MID"
+
+fungsi::buat, :"buat_pesan"
+    nilai::tetapkan, :"Halo, dunia!", :pesan:
+    teks::validasi, :pesan:
+    kembalikan::nilai, :pesan:
+:selesai
+
+fungsi::panggil, :"buat_pesan", :hasil:
+jika::valid, :hasil:
+    layar::cetak, :hasil:
+jika_tidak
+    error::laporkan, :"INVALID_MESSAGE"
+:selesai
+
+:akhir

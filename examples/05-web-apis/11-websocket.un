@@ -1,0 +1,9 @@
+# DESIGN-ONLY
+realtime::websocket_connect, :"wss://stream.example.test/events", :socket:
+realtime::heartbeat, :socket:, :interval_ms(30000):
+realtime::max_frame_size, :socket:, 1048576
+realtime::max_send_queue, :socket:, 500
+realtime::on_message, :socket:, :validate_and_dispatch:
+realtime::on_error, :socket:, :record_error:
+realtime::on_close, :socket:, :cleanup:
+:akhir

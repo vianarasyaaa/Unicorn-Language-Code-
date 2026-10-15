@@ -1,0 +1,12 @@
+# DESIGN-ONLY; retry only a read-only/idempotent operation by default.
+retry::policy, :"read_policy":
+    retry::maks_percobaan, 3
+    retry::base_delay_ms, 250
+    retry::max_delay_ms, 2000
+    retry::jitter, :"FULL"
+    retry::hanya_status, [408, 429, 500, 502, 503, 504]
+:selesai
+http::request_buat, :"GET", :url:, :req:
+http::deadline, :req:, 6000
+http::kirim_dengan_policy, :req:, :"read_policy", :res:
+:akhir

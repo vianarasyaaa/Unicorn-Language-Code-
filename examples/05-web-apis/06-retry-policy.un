@@ -1,0 +1,16 @@
+#program "BOUNDED_RETRY"
+#level "MID"
+
+retry::policy, :policy:
+retry::max_attempts, :policy:, 3
+retry::backoff, :policy:, :"EXPONENTIAL_WITH_JITTER"
+retry::respect_retry_after, :policy:, benar
+retry::retry_status, :policy:, [429, 502, 503, 504]
+retry::allowed_methods, :policy:, ["GET", "HEAD"]
+retry::overall_deadline_ms, :policy:, 8000
+
+http::request_buat, :"GET", :"https://jsonplaceholder.typicode.com/posts/1", :request:
+http::retry_attach, :request:, :policy:
+http::kirim, :request:, :response:
+http::hasil_periksa, :response:, :result:
+:akhir

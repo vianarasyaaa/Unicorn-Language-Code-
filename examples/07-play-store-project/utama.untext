@@ -1,0 +1,46 @@
+#bahasa "ID"
+#level "MID"
+
+program "UNICORN_PLAY":
+
+    persamaan= "aplikasi",
+    objek::(aplikasi):,
+
+    pencocokan= "pencarian",
+    objek::(pencarian):,
+    instalasi=blabalabala
+
+    fungsi cari_aplikasi(jarjit):a,
+
+        ambil_input :a:"pencarian"
+
+        cari_data:a: "aplikasi"
+
+        tampilkan:a: "daftar_aplikasi"
+
+    fungsi tampilkan_aplikasi(jarjit):a,
+
+        baca_data:a: "aplikasi"
+
+        tampilkan:a: "daftar_aplikasi"
+
+    fungsi buka_detail(jarjit):a,
+
+        baca_data:a: "aplikasi"
+
+        tampilkan:a: "detail_aplikasi"
+
+    fungsi instal_aplikasi(jarjit):a
+
+        buka_tautan_instalasi
+
+    saat halaman:a:dibuka:
+
+        maka::tampilkan:a: aplikasi :("")
+
+    saat tombol:a:diklik "cari_aplikasi":
+
+       maka::cari_aplikasi("")
+
+:selesai
+:akhir

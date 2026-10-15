@@ -1,0 +1,15 @@
+#bahasa "ID"
+#level "HIGH"
+
+program "PENCOCOKAN_APLIKASI":
+
+    pencocokan= "WhatsApp",
+    objek::(WhatsApp):,
+
+    kenyataan::a:,
+        maka#hampir#dengan::WeChat,
+
+    :hasil:"WhatsApp dan WeChat memiliki fungsi yang hampir serupa dalam komunikasi."
+
+:selesai
+:akhir

@@ -1,0 +1,10 @@
+# DESIGN-ONLY
+api::client, :"provider", :client:
+api::rate_limit, :client:
+    rate::requests_per_second, 5
+    rate::burst, 10
+    rate::max_concurrent, 4
+    rate::queue_capacity, 100
+    rate::on_full, :"BACKPRESSURE"
+:selesai
+:akhir

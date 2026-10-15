@@ -1,0 +1,13 @@
+#program "WEBSOCKET_CLIENT"
+#level "MID"
+
+ws::hubungkan, :"wss://api.example.com/events", :socket:
+ws::auth_from_secret_ref, :socket:, :"WEBSOCKET_TOKEN"
+ws::max_message_bytes, :socket:, 262144
+ws::outgoing_queue_limit, :socket:, 128
+ws::heartbeat_interval_ms, :socket:, 30000
+ws::on_message, :socket:, :handle_message:
+ws::on_close, :socket:, :handle_close:
+ws::subscribe, :socket:, :"notifications"
+ws::jalankan, :socket:
+:akhir

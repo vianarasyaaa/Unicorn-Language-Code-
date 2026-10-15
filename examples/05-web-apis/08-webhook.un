@@ -1,0 +1,13 @@
+# DESIGN-ONLY; header and signature scheme are provider-specific.
+web::route, :server:, :"POST", :"/hooks/provider", :hook:
+request::batas_body, :request:, 1048576
+request::raw_body, :request:, :raw:
+request::header, :request:, :"X-Signature", :signature:
+secret::ambil_env, :"PROVIDER_WEBHOOK_SECRET", :secret:
+crypto::verify_provider_signature, :secret:, :raw:, :signature:, :valid:
+assert::benar, :valid
+json::decode, :raw:, :event:
+event::dedupe, :event.id:, :is_new:
+queue::push_durable, :event:, :is_new:
+api::response, 202, :"ACCEPTED"
+:akhir

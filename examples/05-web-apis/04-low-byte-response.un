@@ -1,0 +1,39 @@
+#program "BOUNDED_RESPONSE_BYTES"
+#level "EXTREME_LOW"
+
+konstanta::tetapkan, 1048576, :MAX_BODY:
+http::request_buat, :"GET", :"https://jsonplaceholder.typicode.com/posts/1", :req:
+http::timeout_total, :req:, 5000
+http::response_limit, :req:, :MAX_BODY:
+http::kirim, :req:, :res:
+http::status, :res:, :status:
+http::header_ambil, :res:, :"Content-Length", :length_header:
+
+jika::ada, :length_header:
+    angka::parse_unsigned, :length_header:, :declared_length:
+    kondisi::jika, :declared_length: > :MAX_BODY:
+        http::batal, :res:
+        error::return, :"BODY_TOO_LARGE"
+    :selesai
+:selesai
+
+nilai::tetapkan, 0, :total_bytes:
+buffer::buat_bounded, 16384, :chunk:
+ulang::selama, :stream_open:
+    http::baca_chunk, :res:, :chunk:, :read_count:
+    kondisi::jika, :read_count: == 0
+        nilai::tetapkan, salah, :stream_open:
+    :selesai
+    nilai::tambah, :total_bytes:, :read_count:, :new_total:
+    kondisi::jika, :new_total: > :MAX_BODY:
+        http::batal, :res:
+        buffer::bebaskan, :chunk:
+        error::return, :"BODY_TOO_LARGE"
+    :selesai
+    byte::konsumsi, :chunk:, :read_count:
+    nilai::salin, :new_total:, :total_bytes:
+:selesai
+
+buffer::bebaskan, :chunk:
+http::response_close, :res:
+:akhir

@@ -1,0 +1,6 @@
+#program "CONTOH_HYBRID"
+#language "HYBRID"
+#level "MID"
+nilai::tetapkan, 42, :answer:
+screen::print, :answer:
+:akhir

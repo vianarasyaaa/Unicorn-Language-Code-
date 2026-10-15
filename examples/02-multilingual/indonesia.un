@@ -1,0 +1,5 @@
+#program "CONTOH_ID"
+#language "ID"
+#level "HIGH"
+layar::cetak, :"Halo, dunia!"
+:akhir

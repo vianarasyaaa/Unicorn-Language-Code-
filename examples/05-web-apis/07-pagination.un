@@ -1,0 +1,18 @@
+# DESIGN-ONLY; bound pages/records and use provider's actual pagination contract.
+nilai::tetapkan, 1, :page:
+nilai::tetapkan, 10, :page_size:
+nilai::tetapkan, 20, :max_pages:
+ulang::selama, :page: <= :max_pages:
+    http::request_buat, :"GET", :base_url:, :req:
+    http::query, :req:, :"page", teks::dari_angka(:page:)
+    http::query, :req:, :"page_size", teks::dari_angka(:page_size:)
+    http::kirim, :req:, :res:
+    json::decode, :res:, :items:
+    collection::validasi_batas, :items:, :page_size:
+    collection::proses_batch, :items:
+    jika::kosong, :items:
+        ulang::hentikan
+    :selesai
+    nilai::tambah, :page:, 1, :page:
+:selesai
+:akhir

@@ -1,0 +1,16 @@
+#program "BEARER_AUTH"
+#level "MID"
+
+secret::ambil_env, :"DEMO_API_TOKEN", :token:
+kondisi::jika, :token: == :""
+    error::return, :"MISSING_CREDENTIAL"
+:selesai
+
+api::client_buat, :"https://api.example.com/v1", :client:
+api::timeout, :client:, 5000
+api::header, :client:, :"Authorization", :bearer(:token:)
+api::header, :client:, :"Accept", :"application/json"
+api::get, :client:, :"/profile", :profile:
+api::check_auth_error, :profile:, :auth_result:
+
+:akhir

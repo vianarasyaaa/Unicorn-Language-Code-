@@ -1,0 +1,15 @@
+# DESIGN-ONLY
+cache::get, :cache:, :cache_key:, :entry:
+http::request_buat, :"GET", :url:, :req:
+jika::ada, :entry:
+    http::header, :req:, :"If-None-Match", :entry.etag:
+:selesai
+http::kirim, :req:, :res:
+response::status, :res:, :status:
+jika::sama, :status:, 304
+    cache::gunakan_tanpa_body, :entry:, :data:
+jika_tidak
+    cache::validasi_scope, :res:
+    cache::simpan_sesuai_cache_control, :cache:, :res:
+:selesai
+:akhir

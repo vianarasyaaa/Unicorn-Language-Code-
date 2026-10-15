@@ -1,0 +1,13 @@
+# DESIGN-ONLY — UNICORN proposal, not executable yet
+# GET a demo post and validate before use.
+http::klien_buat, :"https://jsonplaceholder.typicode.com", :client:
+http::request_buat, :"GET", :"/posts/1", :req:
+http::header, :req:, :"Accept", :"application/json"
+http::timeout, :req:, 5000
+http::kirim, :client:, :req:, :res:
+response::status, :res:, :status:
+assert::dalam_rentang, :status:, 200, 299
+json::decode, :res:, :post:
+schema::validasi, :post:, :"DemoPost", :valid:
+assert::benar, :valid
+:akhir

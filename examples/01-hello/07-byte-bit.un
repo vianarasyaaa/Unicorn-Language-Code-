@@ -1,0 +1,13 @@
+#program "BYTE_BIT_DEMO"
+#level "BYTE_BIT"
+
+nilai::tetapkan, 0b00001100, :A:
+nilai::tetapkan, 0b00001010, :B:
+bit::AND, :A:, :B:, :HASIL_AND:
+bit::OR, :A:, :B:, :HASIL_OR:
+bit::XOR, :A:, :B:, :HASIL_XOR:
+bit::geser_kiri, 1, 4, :HASIL_SHIFT:
+byte::baca, :data:, :indeks:, :byte:
+bit::mask, :byte:, 0b00001111, :field:
+
+:akhir

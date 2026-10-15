@@ -1,0 +1,10 @@
+#program "GRAPHQL_QUERY"
+#level "HIGH"
+
+graphql::client, :"https://api.example.com/graphql", :client:
+graphql::operation, :client:, :"GetUser", :query:, :variables:
+graphql::timeout, :client:, 5000
+graphql::execute, :client:, :result:
+graphql::validate_data_and_errors, :result:, :validated:
+layar::cetak, :validated:
+:akhir

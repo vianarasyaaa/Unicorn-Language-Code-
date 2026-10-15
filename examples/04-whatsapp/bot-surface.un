@@ -1,0 +1,12 @@
+#program "UNICORN_WA_SKETCH"
+#language "HYBRID"
+#level "HIGH"
+
+bot::buat, :"Rasya"
+bot::gunakan, :"BAILEYS_BINDING"
+whatsapp::saat_pesan, :pesan:
+    percakapan::proses, :pesan:, :jawaban:
+    whatsapp::balas, :pesan:, :jawaban:
+:selesai
+
+:akhir

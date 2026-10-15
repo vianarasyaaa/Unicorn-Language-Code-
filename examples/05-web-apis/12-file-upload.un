@@ -1,0 +1,10 @@
+# DESIGN-ONLY
+http::request_buat, :"POST", :upload_url:, :req:
+http::multipart_field, :req:, :"description", :description:
+http::multipart_file, :req:, :"file", :file_path:
+http::body_limit, :req:, 10485760
+http::timeout, :req:, 60000
+http::kirim_streaming, :req:, :res:
+response::status, :res:, :status:
+assert::di_dalam, :status:, 200, 299
+:akhir

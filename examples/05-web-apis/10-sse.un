@@ -1,0 +1,10 @@
+#program "SSE_CLIENT"
+#level "MID"
+
+sse::buka, :"https://api.example.com/events", :stream:
+sse::max_event_bytes, :stream:, 262144
+sse::reconnect, :stream:, :"BOUNDED_WITH_JITTER"
+sse::saat_event, :stream:, :handle_event:
+sse::saat_error, :stream:, :handle_error:
+sse::mulai, :stream:
+:akhir

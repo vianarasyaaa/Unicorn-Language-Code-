@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: UNICORN Demo Items API
+  version: 1.0.0
+  description: Example contract only; not a deployed service.
+servers:
+  - url: http://127.0.0.1:8080
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      responses:
+        '200':
+          description: Service healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, const: ok }
+  /v1/items/{id}:
+    get:
+      operationId: getItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer, minimum: 1 }
+      responses:
+        '200':
+          description: Item found
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [id, name]
+                properties:
+                  id: { type: integer, minimum: 1 }
+                  name: { type: string }
+        '404':
+          description: Item not found
+        '422':
+          description: Invalid ID

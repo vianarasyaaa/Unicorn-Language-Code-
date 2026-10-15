@@ -1,0 +1,26 @@
+#program "HALO_LOW"
+#level "LOW"
+
+konstanta::tetapkan, 13, :N:
+memori::alokasi, :N:, :buffer:
+memori::validasi, :buffer:
+buffer::bersihkan, :buffer:, :N:
+byte::tulis, :buffer:, 0, 72
+byte::tulis, :buffer:, 1, 97
+byte::tulis, :buffer:, 2, 108
+byte::tulis, :buffer:, 3, 111
+byte::tulis, :buffer:, 4, 44
+byte::tulis, :buffer:, 5, 32
+byte::tulis, :buffer:, 6, 100
+byte::tulis, :buffer:, 7, 117
+byte::tulis, :buffer:, 8, 110
+byte::tulis, :buffer:, 9, 105
+byte::tulis, :buffer:, 10, 97
+byte::tulis, :buffer:, 11, 33
+byte::tulis, :buffer:, 12, 10
+buffer::validasi_panjang, :buffer:, :N:
+sistem::tulis_semua, :stdout:, :buffer:, :N:, :hasil:
+memori::bebaskan, :buffer:
+program::keluar, :hasil:
+
+:akhir

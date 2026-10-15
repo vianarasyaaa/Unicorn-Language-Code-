@@ -1,0 +1,9 @@
+# DESIGN-ONLY
+graphql::client, :"https://api.example.test/graphql", :client:
+graphql::query, :client:, :"query Post($id: ID!) { post(id: $id) { id title } }", :query:
+graphql::variable, :query:, :"id", :"1"
+graphql::send, :client:, :result:
+graphql::check_transport_status, :result:
+graphql::check_graphql_errors, :result:, :errors:
+assert::empty, :errors:
+:akhir

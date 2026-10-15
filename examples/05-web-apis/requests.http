@@ -1,0 +1,31 @@
+### GET one post (public demo API)
+GET https://jsonplaceholder.typicode.com/posts/1
+Accept: application/json
+
+### GET posts by user
+GET https://jsonplaceholder.typicode.com/posts?userId=1
+Accept: application/json
+
+### POST a demo post (mock service; not persisted)
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "UNICORN Ω API example",
+  "body": "This is a learning payload.",
+  "userId": 1
+}
+
+### PATCH a demo post (mock service; not persisted)
+PATCH https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Updated title"
+}
+
+### DELETE a demo post (mock service; not persisted)
+DELETE https://jsonplaceholder.typicode.com/posts/1
+Accept: application/json

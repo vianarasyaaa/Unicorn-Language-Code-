@@ -1,0 +1,7 @@
+#program "HALO_AUTO"
+#language "ID"
+#level "AUTO"
+
+program::buat, :"halo"
+
+:akhir

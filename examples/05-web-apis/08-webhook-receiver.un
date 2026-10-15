@@ -1,0 +1,23 @@
+#program "WEBHOOK_RECEIVER"
+#level "LOW_MID"
+
+server::route, :"POST", :"/webhooks/provider", :webhook_handler:
+
+fungsi::buat, :"webhook_handler"
+    request::limit_body, 1048576
+    request::raw_body, :body:
+    secret::ref, :"PROVIDER_WEBHOOK_SECRET", :secret_ref:
+    webhook::verify_signature, :body:, :headers:, :secret_ref:, :verified:
+    kondisi::jika, :verified: == salah
+        response::status, 401
+        kembalikan::nilai, :response:
+    :selesai
+    webhook::parse_event, :body:, :event:
+    schema::validate, :event:, :"ProviderEvent", :valid_event:
+    queue::persist_idempotent, :valid_event:, :accepted:
+    response::status, 202
+    response::json, { :"accepted": benar }
+    kembalikan::nilai, :response:
+:selesai
+
+:akhir

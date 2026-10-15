@@ -1,0 +1,13 @@
+# DESIGN-ONLY
+json::objek_buat, :payload:
+json::set, :payload:, :"title", :"UNICORN API sample"
+json::set, :payload:, :"body", :"This is a demo payload"
+json::set, :payload:, :"userId", 1
+http::request_buat, :"POST", :"https://jsonplaceholder.typicode.com/posts", :req:
+http::header, :req:, :"Content-Type", :"application/json"
+http::body_json, :req:, :payload:
+http::kirim, :req:, :res:
+response::status, :res:, :status:
+assert::di_dalam, :status:, 200, 299
+json::decode, :res:, :created:
+:akhir

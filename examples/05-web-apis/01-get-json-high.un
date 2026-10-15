@@ -1,0 +1,7 @@
+#program "GET_JSON_HIGH"
+#level "HIGH"
+
+api::get_json, :"https://jsonplaceholder.typicode.com/posts/1", :post:
+api::pastikan_sukses, :post:
+layar::cetak, :post.title:
+:akhir

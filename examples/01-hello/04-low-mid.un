@@ -1,0 +1,13 @@
+#program "HALO_LOW_MID"
+#level "LOW_MID"
+
+teks::enkode, :"Halo, dunia!", :"UTF8", :data:
+buffer::ukur, :data:, :n:
+memori::alokasi, :n:, :buffer:
+memori::validasi, :buffer:
+buffer::salin, :data:, :buffer:, :n:
+sistem::stdout, :stdout:
+sistem::tulis_semua, :stdout:, :buffer:, :n:, :tertulis:
+memori::bebaskan, :buffer:
+
+:akhir

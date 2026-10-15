@@ -1,0 +1,10 @@
+# DESIGN-ONLY; token must come from environment/secret store.
+secret::ambil_env, :"DEMO_API_TOKEN", :token:
+assert::tidak_kosong, :token
+http::request_buat, :"GET", :"https://api.example.test/v1/me", :req:
+http::header, :req:, :"Authorization", teks::gabung(:"Bearer ", :token:)
+http::header, :req:, :"Accept", :"application/json"
+http::timeout, :req:, 5000
+http::kirim, :req:, :res:
+secret::hapus_dari_scope, :token:
+:akhir

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="360" viewBox="0 0 1400 360" role="img" aria-labelledby="title desc">
+  <title id="title">UNICORN Omega</title><desc id="desc">A gradient banner for UNICORN Omega creator-taught language-design documentation in an experimental draft stage.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1020"/><stop offset="0.52" stop-color="#21134B"/><stop offset="1" stop-color="#064E68"/></linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#A78BFA"/><stop offset="0.5" stop-color="#67E8F9"/><stop offset="1" stop-color="#F0ABFC"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#FFFFFF" stroke-opacity=".06" stroke-width="1"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1400" height="360" rx="28" fill="url(#bg)"/><rect width="1400" height="360" rx="28" fill="url(#grid)"/>
+  <circle cx="1190" cy="58" r="170" fill="#8B5CF6" opacity=".14"/><circle cx="1295" cy="310" r="180" fill="#22D3EE" opacity=".13"/>
+  <g transform="translate(70 60)" filter="url(#glow)"><path d="M35 175 C15 129 39 82 81 70 L60 19 L116 59 C153 49 192 67 208 98 C225 132 202 166 179 183 L211 221 L160 207 C127 225 79 216 57 195 Z" fill="none" stroke="url(#line)" stroke-width="7" stroke-linejoin="round"/><path d="M110 60 L142 0 L151 58" fill="none" stroke="#F0ABFC" stroke-width="8" stroke-linejoin="round"/><circle cx="160" cy="107" r="6" fill="#FFFFFF"/><path d="M177 142 Q155 157 136 143" fill="none" stroke="#67E8F9" stroke-width="5" stroke-linecap="round"/><path d="M44 99 L12 83 M45 126 L2 126 M55 153 L17 174" stroke="#A78BFA" stroke-width="5" stroke-linecap="round"/></g>
+  <text x="330" y="142" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="62" font-weight="800" letter-spacing="2" fill="#FFFFFF">UNICORN <tspan fill="#67E8F9">Ω</tspan></text>
+  <text x="334" y="195" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" fill="#D8D9F5">CREATOR-TAUGHT LANGUAGE DESIGN</text>
+  <rect x="334" y="222" width="650" height="3" rx="2" fill="url(#line)"/>
+  <text x="334" y="264" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" fill="#CBD5E1">FOUR WEB EXTENSIONS  ·  LOGIC POINTS  ·  DOCUMENTATION</text>
+  <text x="334" y="310" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" fill="#A5B4FC">EXPERIMENTAL DRAFT  ·  COMPILER NOT INCLUDED</text>
+</svg>
